@@ -1,0 +1,7 @@
+{
+  "name": "agevolt-developer-tools-marketplace",
+  "interface": {
+    "displayName": "AgeVolt Developer Tools"
+  },
+  "plugins": []
+}
