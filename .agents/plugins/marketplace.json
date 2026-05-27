@@ -3,5 +3,18 @@
   "interface": {
     "displayName": "AgeVolt Product myAgeVolt"
   },
-  "plugins": []
+  "plugins": [
+    {
+      "name": "myagevolt-db-dev-copilot",
+      "source": {
+        "source": "local",
+        "path": "./plugins/myagevolt-db-dev-copilot"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
 }

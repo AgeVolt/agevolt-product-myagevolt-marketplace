@@ -1,0 +1,43 @@
+{
+  "name": "myagevolt-db-dev-copilot",
+  "version": "0.1.1",
+  "description": "AgeVolt plugin pre databazovu pracu na MyAgeVolt: MySQL rutiny, cistenie dat, kontrola schemy, vykonova diagnostika, OCPP RAW/davkovy tok a DataGrid DB kontrakty.",
+  "author": {
+    "name": "AgeVolt",
+    "email": "zustiak@agevolt.com",
+    "url": "https://www.agevolt.com"
+  },
+  "homepage": "https://github.com/AgeVolt/agevolt-product-myagevolt-marketplace",
+  "repository": "https://github.com/AgeVolt/agevolt-product-myagevolt-marketplace",
+  "license": "UNLICENSED",
+  "keywords": [
+    "agevolt",
+    "myagevolt",
+    "mysql",
+    "databaza",
+    "ocpp",
+    "datagrid",
+    "rutiny"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "MyAgeVolt DB Pomocnik",
+    "shortDescription": "MySQL rutiny, schema, vykon a DB kontrakty.",
+    "longDescription": "Databazovy pomocnik pre MyAgeVolt portal. Pomaha s MySQL pohladmi, triggermi, procedurami, eventmi, OCPP RAW/davkovym tokom, jednorazovym cistenim dat, DB chybami, pomalymi dotazmi a DataGrid DB kontraktmi. Verejny plugin obsahuje iba pracovne postupy a bezpecnostne pravidla. Sukromne DB exporty a inventar schemy ostavaju mimo verejneho Gitu.",
+    "developerName": "AgeVolt",
+    "category": "Productivity",
+    "capabilities": [
+      "Interactive",
+      "Read"
+    ],
+    "websiteURL": "https://www.agevolt.com",
+    "brandColor": "#280046",
+    "composerIcon": "./assets/icon.png",
+    "logo": "./assets/logo.png",
+    "defaultPrompt": [
+      "Uprav existujuci MySQL trigger iba cez dotknute bloky.",
+      "Skontroluj pomaly dotaz a najprv najdi pokrytie indexom.",
+      "Priprav DB zadanie pre Cursor agenta."
+    ]
+  }
+}

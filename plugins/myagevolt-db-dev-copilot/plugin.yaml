@@ -1,0 +1,54 @@
+id: myagevolt-db-dev-copilot
+display_name: "MyAgeVolt DB Pomocnik"
+status: active-pilot
+purpose: "Databazova praca pre MyAgeVolt: MySQL pohlady, triggery, procedury, eventy, OCPP RAW/davkovy tok, cistenie dat, DB chyby, pomale dotazy a DataGrid DB kontrakty."
+skills:
+  - id: mysql-routine-change-copilot
+    status: active-pilot
+  - id: mysql-performance-review
+    status: active-pilot
+  - id: mysql-db-error-triage
+    status: active-pilot
+  - id: mysql-schema-query-copilot
+    status: active-pilot
+  - id: mysql-data-cleanup-copilot
+    status: active-pilot
+  - id: db-agent-handoff-brief
+    status: active-pilot
+  - id: datagrid-db-contract
+    status: active-pilot
+kb:
+  - README.md
+  - mysql-agevolt-environment.md
+  - mysql-routine-style-rules.md
+  - mysql-performance-index-rules.md
+  - mysql-safety-boundaries.md
+  - mysql-schema-inventory.md
+  - cleanup-examples.md
+  - fk-error-checklist.md
+  - handoff-template.md
+  - slow-query-report-template.md
+  - mysql-access-gaps.md
+public_git_kb:
+  - README.md
+  - mysql-agevolt-environment.md
+  - mysql-routine-style-rules.md
+  - mysql-performance-index-rules.md
+  - mysql-safety-boundaries.md
+  - mysql-schema-inventory.md
+  - cleanup-examples.md
+  - fk-error-checklist.md
+  - handoff-template.md
+  - slow-query-report-template.md
+  - mysql-access-gaps.md
+private_kb_source: "AI Agent/marketplaces/agevolt-product-myagevolt-marketplace/plugins/myagevolt-db-dev-copilot/kb"
+private_sharepoint_only_kb:
+  - mysql-project-instructions-triggers-cistenie.md
+  - triggers-cistenie-chat-review.csv
+  - triggers-cistenie-chat-index-full.csv
+  - triggers-cistenie-source-manifest.csv
+rules:
+  private_kb_required_for_real_schema_claims: true
+  public_git_contains_no_raw_db_exports: true
+  no_write_mcp_in_mvp: true
+  ask_for_csv_or_readonly_mcp_when_schema_missing: true

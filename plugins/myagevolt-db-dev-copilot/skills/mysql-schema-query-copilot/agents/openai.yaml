@@ -1,0 +1,7 @@
+interface:
+  display_name: "MySQL Schema"
+  short_description: "SQL lookupy iba na citanie."
+  icon_small: "./assets/icon.png"
+  icon_large: "./assets/logo.png"
+  brand_color: "#280046"
+  default_prompt: "Priprav SELECT iba na citanie nad znamou MyAgeVolt DB strukturou."

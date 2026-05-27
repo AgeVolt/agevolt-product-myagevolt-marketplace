@@ -1,0 +1,28 @@
+id: agevolt-product-myagevolt-marketplace
+codex_marketplace_id: product-myagevolt
+display_name: "AgeVolt Product myAgeVolt"
+status: active-build
+structure_version: 1
+git_repo: "https://github.com/AgeVolt/agevolt-product-myagevolt-marketplace"
+audience:
+  - product-myagevolt
+  - myagevolt-developers
+  - support
+  - technical-qa
+  - developers
+purpose: "KB, pravidla, navody, developerske nastroje a technicke pracovne postupy pre portal myAgeVolt."
+kb:
+  - id: myagevolt-platform-kb
+    status: seed
+    path: kb/myagevolt-platform-kb.md
+  - id: myagevolt-architecture-kb
+    status: seed
+    path: kb/myagevolt-architecture-kb.md
+plugins:
+  - id: myagevolt-db-dev-copilot
+    status: active-pilot
+    path: plugins/myagevolt-db-dev-copilot
+rules:
+  create_plugins_only_after_creator_intake: true
+  public_git_contains_only_public_safe_bootstrap: true
+  scope_is_myagevolt_portal_only: true
