@@ -1,7 +1,7 @@
 interface:
-  display_name: "MySQL Schema"
-  short_description: "SQL lookupy iba na citanie."
+  display_name: "MySQL Schema Queries"
+  short_description: "Read-only SQL lookups."
   icon_small: "./assets/icon.png"
   icon_large: "./assets/logo.png"
   brand_color: "#280046"
-  default_prompt: "Najdi schemu v database repo a priprav SELECT iba na citanie."
+  default_prompt: "Find schema context in the database repo and prepare a read-only SELECT."

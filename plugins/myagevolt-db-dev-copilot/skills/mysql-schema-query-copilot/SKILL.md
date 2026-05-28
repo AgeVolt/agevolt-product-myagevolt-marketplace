@@ -22,10 +22,16 @@ V `database` repo najprv hladaj v `exports/**`, `exports/_metadata/**`,
 suboroch. `triggers cistenie` je len legacy kontext; konflikt vyhrava
 `database`.
 
+Pred schema lookupom, ktory bude podkladom pre implementaciu alebo odporucanie
+diffu, vykonaj `Repo Sync Gate` z `database-repo-workflow.md`. Ak je repo na
+feature branchi s lokalnymi zmenami, nahlas blocker namiesto tvrdenia, ze ide o
+najnovsi main.
+
 ## Postup
 
 1. Urci pozadovany vystup: pocet, lookup, join, hladanie, validacia alebo report.
-2. Pomenuj precitane database repo subory a potvrdene fakty o tabulkach/stlpcoch.
+2. Pomenuj latest-main sync stav, precitane database repo subory a potvrdene
+   fakty o tabulkach/stlpcoch.
 3. Vytvor `SELECT` iba na citanie.
 4. Pri ambiguitach kvalifikuj stlpce a aliasy.
 5. Pridaj kratke vysvetlenie joinov a filtrov.

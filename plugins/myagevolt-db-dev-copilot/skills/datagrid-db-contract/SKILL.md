@@ -23,6 +23,11 @@ V `database` repo citaj `exports/agevolt/config_data/general_mysql_*`,
 `exports/agevolt_fe_sp/**` a relevantne `knowledge_base/database/api-contracts.md`.
 `triggers cistenie` je iba legacy kontext; pri konflikte vyhrava `database` repo.
 
+Pred objektovym lookupom alebo diffom vykonaj `Repo Sync Gate` z
+`database-repo-workflow.md`: `git fetch origin`, cisty hlavny branch,
+`git pull --rebase --ff-only`, potom branch z aktualneho mainu. Ak je repo na
+feature branchi alebo ma lokalne zmeny, zastav a ukaz blocker.
+
 ## Rozsah
 
 Patri sem:
@@ -41,7 +46,7 @@ Mimo rozsahu:
 
 ## Postup
 
-1. Pomenuj precitane database repo subory a aktualny DB kontrakt.
+1. Pomenuj latest-main sync stav, precitane database repo subory a aktualny DB kontrakt.
 2. Ak treba zmena, priprav novu branchu, export/config diff a changelog kandidat.
 3. Ukaz zmenene subory, relevantny diff a testovaci SQL plan.
 4. Spytaj sa na commit; po commite sa samostatne spytaj na push.

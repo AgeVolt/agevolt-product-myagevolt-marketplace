@@ -23,9 +23,13 @@ relevantne DDL exporty, `knowledge_base/database/data-access.md`,
 `knowledge_base/database/mysql-style.md` a `knowledge_base/quality/testing.md`.
 `triggers cistenie` je iba legacy kontext; pri konflikte vyhrava `database` repo.
 
+Pred analyzou, ktora moze skoncit diffom, vykonaj `Repo Sync Gate` z
+`database-repo-workflow.md`. Branch vytvaraj iba z hlavnej branche po
+`git fetch origin` a `git pull --rebase --ff-only`.
+
 ## Postup
 
-1. Zoskup opakovane vzory dotazov a pomenuj pouzivatelsky dopad.
+1. Pomenuj latest-main sync stav, zoskup opakovane vzory dotazov a pomenuj pouzivatelsky dopad.
 2. Rad podla frekvencie, rows examined, latencie, horucej cesty a rizika.
 3. Pred navrhom indexu pomenuj existujuce indexy alebo metadata, ktore dotaz
    pokryvaju alebo nepokryvaju.

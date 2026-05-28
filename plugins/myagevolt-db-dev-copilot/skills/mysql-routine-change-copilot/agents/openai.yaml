@@ -1,7 +1,7 @@
 interface:
-  display_name: "MySQL Rutiny"
-  short_description: "Zmeny triggerov, procedur a eventov."
+  display_name: "MySQL Routine Changes"
+  short_description: "Trigger, procedure, and event changes."
   icon_small: "./assets/icon.png"
   icon_large: "./assets/logo.png"
   brand_color: "#280046"
-  default_prompt: "Najdi rutinu v database repo a priprav branch, diff a changelog kandidat."
+  default_prompt: "Pull the latest database main, find a routine, and prepare a branch, diff, and changelog candidate."

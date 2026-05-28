@@ -21,12 +21,16 @@ V `database` repo citaj relevantne `exports/**`, `exports/_metadata/foreign_keys
 `knowledge_base/database/error-handling.md`, `knowledge_base/database/security.md`
 a suvisiace topic pravidla. `triggers cistenie` pouzi iba ako legacy kontext.
 
+Pred fixom alebo diffom vykonaj `Repo Sync Gate` z `database-repo-workflow.md`.
+Ak je repo na feature branchi alebo ma lokalne zmeny, zastav a ukaz blocker
+namiesto fixu zo stareho snapshotu.
+
 ## Postup
 
 1. Zachyt presnu chybu, objekt, SQL ukazku a cas, ak su dostupne.
 2. Zarad problem: FK/constraint, typ/collation mismatch, chybajuci index,
    runtime chyba rutiny, OCPP/nabijacia anomalia alebo neznama pricina.
-3. Over DDL, FK, indexy a relevantne pravidla v `database` repo.
+3. Over latest-main sync stav, DDL, FK, indexy a relevantne pravidla v `database` repo.
 4. Pri OCPP/nabijacich anomaliach oddel biznis symptom od DB dokazu.
 5. Vystup ma obsahovat potvrdene fakty, hypotezy, precitane repo subory, dalsie
    kontroly iba na citanie a riziko.

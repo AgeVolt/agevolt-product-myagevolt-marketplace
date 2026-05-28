@@ -1,5 +1,16 @@
 # Revision history
 
+## 2026-05-28 - Latest Main Sync Gate
+
+- Doplnene tvrde pravidlo, ze database repo sa pred objektovym lookupom a
+  implementacnou branchou musi zosynchronizovat cez `git fetch origin` a
+  `git pull --rebase --ff-only` na hlavnej branchi.
+- Ak je database repo na feature branchi alebo ma lokalne zmeny, skill musi
+  zastavit a ukazat blocker namiesto prace zo zastaraneho snapshotu.
+- Skilly maju v odpovedi uvadzat branch, base commit a sync stav.
+- UI nazvy pluginu a skillov su po anglicky: display names, kratke popisy a
+  default prompty.
+
 ## 2026-05-28 - Database Repo Merge
 
 - Zluceny legacy kontext ChatGPT projektu `triggers cistenie` s novym AgeVolt

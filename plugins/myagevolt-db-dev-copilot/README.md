@@ -12,6 +12,7 @@ Plugin pokryva:
 - DB chyby, FK/InnoDB/ENUM/collation diagnostiku,
 - pomale dotazy a kontrolu indexov,
 - DB/metadatovy kontrakt pre DataGrid,
+- latest-main sync gate pred objektovym lookupom a branchou,
 - branch + diff workflow pre review, commit a push.
 
 ## Zdroje A Priorita
@@ -20,7 +21,10 @@ Plugin pokryva:
    DB pravidla.
 2. `database/exports/**`, `exports/_metadata/**`, `changelog/**` a `drafts/**`
    su primarne zdroje pre hladanie objektov a pripravu zmeny.
-3. `triggers cistenie` je legacy kontext zluceny do pracovneho postupu. Ak je v
+3. Pred implementacnym diffom musi `database` repo prejst cez `git fetch origin`
+   a `git pull --rebase --ff-only` na hlavnej branchi. Ak je repo na feature
+   branchi alebo ma lokalne zmeny, skill musi zastavit a ukazat blocker.
+4. `triggers cistenie` je legacy kontext zluceny do pracovneho postupu. Ak je v
    konflikte s `database`, vzdy vyhrava `database`.
 
 ## Hranica Sukromnych Podkladov

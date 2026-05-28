@@ -27,22 +27,28 @@ a `knowledge_base/quality/testing.md`.
 `triggers cistenie` pouzivaj ako legacy kontext. Pri konflikte vzdy vyhrava
 `database/AGENTS.md` a `database/knowledge_base/**`.
 
+Pred objektovym lookupom a branchou vykonaj `Repo Sync Gate` z
+`database-repo-workflow.md`. Branch vytvor az po `git fetch origin`, cistom
+hlavnom branchi a `git pull --rebase --ff-only`. Ak je repo na feature branchi
+alebo ma lokalne zmeny, zastav a ukaz blocker.
+
 ## Postup
 
-1. Najdi DB objekt v `database/exports/<schema>/{routines,triggers,events}`.
-2. Ak objekt chyba, nahlas access gap alebo potrebu refreshu; nepytaj pasted
+1. Vykonaj latest-main sync gate a uved branch/base commit.
+2. Najdi DB objekt v `database/exports/<schema>/{routines,triggers,events}`.
+3. Ak objekt chyba, nahlas access gap alebo potrebu refreshu; nepytaj pasted
    `SHOW CREATE` ako prvy krok.
-3. Over `git status --short --branch` v `database` repo. Ak je cisty, priprav
-   branch `codex/db-<kratky-slug>`; ak nie je cisty, zastav a ukaz zmeny.
-4. Pri existujucom objekte uprav iba dotknuty `label: BEGIN ... END;` blok alebo
+4. Ak sync gate presiel, priprav branch `codex/db-<kratky-slug>` z aktualneho
+   mainu.
+5. Pri existujucom objekte uprav iba dotknuty `label: BEGIN ... END;` blok alebo
    sustredeny diff v exporte.
-5. Pri novom objekte priprav kompletny export a changelog kandidat s
+6. Pri novom objekte priprav kompletny export a changelog kandidat s
    `DELIMITER //` a `DEFINER=\`dev_admin\`@\`%\``.
-6. Vzdy priprav `changelog/YYYYMMDD_HHMMSS__<schema>__<short_description>.sql`
+7. Vzdy priprav `changelog/YYYYMMDD_HHMMSS__<schema>__<short_description>.sql`
    pre DB zmenu.
-7. Ukaz, ktore subory boli zmenene, relevantny diff a precitane KB.
-8. Spytaj sa na commit. Bez potvrdenia necommituj.
-9. Po commite sa samostatne spytaj na push. Bez potvrdenia nepushuj.
+8. Ukaz, ktore subory boli zmenene, relevantny diff a precitane KB.
+9. Spytaj sa na commit. Bez potvrdenia necommituj.
+10. Po commite sa samostatne spytaj na push. Bez potvrdenia nepushuj.
 
 ## Hranice
 

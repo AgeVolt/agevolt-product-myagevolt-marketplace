@@ -21,9 +21,13 @@ V `database` repo citaj relevantne exporty, metadata a
 `knowledge_base/database/mutations-or-writes.md`.
 `triggers cistenie` je iba legacy kontext; pri konflikte vyhrava `database` repo.
 
+Pred lookupom s implementacnym dopadom alebo branchou vykonaj `Repo Sync Gate`
+z `database-repo-workflow.md`. Branch vytvor az po `git fetch origin`, cistom
+hlavnom branchi a `git pull --rebase --ff-only`.
+
 ## Postup
 
-1. Najprv potvrd tabulku, stlpce a existujuce pravidla v `database` repo.
+1. Najprv potvrd latest-main sync stav, tabulku, stlpce a existujuce pravidla v `database` repo.
 2. Oddel kontrolne SQL od zapisoveho SQL.
 3. Pred kazdym `UPDATE` priprav nahladovy `SELECT`.
 4. Zapisove SQL obmedz na ID alebo presne predikaty.

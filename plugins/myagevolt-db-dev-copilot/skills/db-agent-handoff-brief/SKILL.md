@@ -21,11 +21,17 @@ alebo objekt chyba, nahlas access gap.
 `triggers cistenie` je iba legacy kontext; pri konflikte ho prepisuje
 `database/AGENTS.md` a `database/knowledge_base/**`.
 
+Ak handoff smeruje k implementacii, zahrn `Repo Sync Gate`: ci prebehol
+`git fetch origin`, ci bol hlavny branch pullnuty cez `git pull --rebase
+--ff-only`, aktualnu branch a base commit. Ak repo ostalo na feature branchi
+alebo ma lokalne zmeny, oznac to ako blocker.
+
 ## Postup
 
 1. V jednej casti pomenuj ciel.
 2. Oddel potvrdene fakty od predpokladov.
-3. Uved database repo cestu, branch, precitane KB a dotknute exporty/changelogy.
+3. Uved database repo cestu, branch, base commit, latest-main sync stav,
+   precitane KB a dotknute exporty/changelogy.
 4. SQL ukazky, nazvy objektov, chyby a linky pridaj iba vtedy, ked su vhodne
    pre cielove publikum.
 5. Najprv definuj kontroly iba na citanie.
