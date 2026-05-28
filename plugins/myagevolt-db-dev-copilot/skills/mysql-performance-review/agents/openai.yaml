@@ -4,4 +4,4 @@ interface:
   icon_small: "./assets/icon.png"
   icon_large: "./assets/logo.png"
   brand_color: "#280046"
-  default_prompt: "Analyzuj pomaly MyAgeVolt dotaz alebo pokrytie indexmi."
+  default_prompt: "Analyzuj pomaly MyAgeVolt dotaz cez database repo metadata a navrhni diff."

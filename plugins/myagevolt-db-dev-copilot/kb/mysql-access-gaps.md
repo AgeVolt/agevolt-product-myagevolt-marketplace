@@ -1,6 +1,24 @@
 # Chybajuce Pristupy A Zdroje
 
-Tieto zdroje su sukromne a nemaju byt vo verejnom Gite:
+## Primarny Zdroj
+
+Primarny zdroj pre realnu MyAgeVolt DB strukturu je lokalny `database` repo:
+
+- `AGENTS.md`
+- `knowledge_base/index.md`
+- `knowledge_base/registry.yaml`
+- relevantne `knowledge_base/**`
+- `exports/**`
+- `exports/_metadata/**`
+- `changelog/**`
+
+Ak `database` repo chyba alebo v nom nie je hladany objekt, nahlas access gap alebo
+refresh blocker. Nepytaj si pasted `SHOW CREATE` alebo CSV ako prvy krok.
+
+## Legacy Zdroje Z `triggers cistenie`
+
+Tieto subory su iba historicky/private kontext a nie su autorita pri konflikte s
+`database` repo:
 
 - `90_tables.csv`
 - `91_columns.csv`
@@ -10,8 +28,20 @@ Tieto zdroje su sukromne a nemaju byt vo verejnom Gite:
 - `95_triggers.csv`
 - `96_routines.csv`
 - `97_events.csv`
-- plne ChatGPT prepisy projektu `triggers cistenie`
+- plne chaty z ChatGPT projektu `triggers cistenie`
 
-Bez tychto zdrojov nevytvaraj tvrdenia o realnej DB strukture. Vypytaj si
-chybajuci export, `SHOW CREATE`, relevantny vyrez alebo schvalene MCP iba na
-citanie.
+Ak su dostupne iba legacy zdroje a `database` repo chyba, pouzi ich len na popis
+rizika alebo handoff. Nevykonavaj implementacne tvrdenia o aktualnej strukture bez
+repo exportu alebo schvaleneho refreshu.
+
+## Business Logic Gap
+
+Ak DB zmena zasahuje domenu, uctovanie, nabijanie, OCPP spracovanie alebo stavovy
+model a `../business-logic` nie je dostupny, zastav a vypis access gap. Nevymyslaj
+business pravidla iba zo stareho chatu.
+
+## Public Git Pravidlo
+
+Do verejneho Gitu patria iba verejne bezpecne workflow pravidla a access-gap popisy.
+Neukladaj raw DB exporty, sample rows, produkcne SQL dumpy, slow logy, hosty,
+secrets ani zakaznicke data.

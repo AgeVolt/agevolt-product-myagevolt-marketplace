@@ -1,10 +1,21 @@
 # Revision history
 
+## 2026-05-28 - Database Repo Merge
+
+- Zluceny legacy kontext ChatGPT projektu `triggers cistenie` s novym AgeVolt
+  `database` repozitarom.
+- `database/AGENTS.md` a `database/knowledge_base/**` su nastavene ako vyssia
+  autorita pri konflikte pravidiel.
+- Skilly maju najprv hladat v `database/exports/**`, `exports/_metadata/**`,
+  `knowledge_base/**`, `changelog/**` a az potom hlasit access gap.
+- Implementacne DB zmeny maju ist cez novu branchu, lokalny diff a changelog
+  kandidat; commit, push a DB apply maju samostatne approval gate.
+
 ## 2026-05-27 - Aktivny Pilotny Zaklad
 
 - Vytvoreny plugin `myagevolt-db-dev-copilot`.
 - Prenesena sukromna staging KB z ChatGPT projektu `triggers cistenie`.
-- Pridanych 7 pilotnych skillov pre MyAgeVolt DB pracu.
+- Pridanych 6 prvych skillov pre MyAgeVolt DB pracu.
 - Doplnene sukromne `triggers-cistenie-chat-index-full.csv` s 324 chatmi
   vycitanymi z ChatGPT projektu cez UI.
 - CSV zdroje `90_tables.csv` az `97_events.csv` su evidovane ako manualny

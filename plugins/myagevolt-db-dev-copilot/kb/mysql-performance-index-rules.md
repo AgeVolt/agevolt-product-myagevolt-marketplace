@@ -1,13 +1,12 @@
 # Pravidla Vykonu A Indexov
 
-- Horuce cesty drz kratke. Do insert/prijem ciest nepridavaj joiny ani drahu
-  logiku, ak to sukromna KB vyslovene nepovoluje.
-- V triggeroch nerob full scan.
-- Kazdy lookup v generovanej trigger/procedure logike musi mat indexovu oporu.
-- Pri kontrole indexov najprv pomenuj existujuci index, ktory dotaz pokryva.
-  Novy index navrhni iba vtedy, ked existujuce indexy nepokryvaju pristupovy
-  vzor.
-- Periodicku alebo tazsiu pracu ries skor ako event/davkovy kandidat, nie ako
-  trigger logiku.
-- Pri analyze pomalych dotazov oddel jednorazovy historicky problem od vzorov,
-  ktore su stale aktualne.
+Verejne bezpecne pravidla pre MyAgeVolt DB vykonovy postup.
+
+- Minimalizovat horucu cestu: raw insert a davkove spracovanie maju byt kratke.
+- V triggeroch nerobit full-scan. Kazdy lookup musi mat index oporu.
+- Pri kontrole indexov najprv povedat, ktory existujuci index dotaz pokryva; novy index navrhnut iba ked treba.
+- Existujuce indexy, velkosti tabuliek a FK vztahy overuj v `database/exports/**`
+  a `database/exports/_metadata/**`.
+- Tazsie alebo periodicke veci riesit eventom; lock patri do eventu, nie do
+  davkovej procedury.
+- Pri reporte pomalych dotazov zoradit zavaznost, vysvetlit dopad, navrhnut minimalnu opravu a oddelit jednorazovy historicky problem od stale aktualneho problemu.

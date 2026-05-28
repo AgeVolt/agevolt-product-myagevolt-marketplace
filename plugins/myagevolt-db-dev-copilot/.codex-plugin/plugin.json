@@ -1,7 +1,7 @@
 {
   "name": "myagevolt-db-dev-copilot",
-  "version": "0.1.1",
-  "description": "AgeVolt plugin pre databazovu pracu na MyAgeVolt: MySQL rutiny, cistenie dat, kontrola schemy, vykonova diagnostika, OCPP RAW/davkovy tok a DataGrid DB kontrakty.",
+  "version": "0.2.0",
+  "description": "AgeVolt plugin pre databazovu pracu na MyAgeVolt cez database repo: MySQL rutiny, schema/export lookup, vykonova diagnostika, OCPP RAW/davkovy tok, DataGrid DB kontrakty a branch/diff workflow.",
   "author": {
     "name": "AgeVolt",
     "email": "zustiak@agevolt.com",
@@ -16,14 +16,13 @@
     "mysql",
     "databaza",
     "ocpp",
-    "datagrid",
-    "rutiny"
+    "datagrid"
   ],
   "skills": "./skills/",
   "interface": {
     "displayName": "MyAgeVolt DB Pomocnik",
-    "shortDescription": "MySQL rutiny, schema, vykon a DB kontrakty.",
-    "longDescription": "Databazovy pomocnik pre MyAgeVolt portal. Pomaha s MySQL pohladmi, triggermi, procedurami, eventmi, OCPP RAW/davkovym tokom, jednorazovym cistenim dat, DB chybami, pomalymi dotazmi a DataGrid DB kontraktmi. Verejny plugin obsahuje iba pracovne postupy a bezpecnostne pravidla. Sukromne DB exporty a inventar schemy ostavaju mimo verejneho Gitu.",
+    "shortDescription": "MySQL repo workflow pre MyAgeVolt.",
+    "longDescription": "Databazovy pomocnik pre MyAgeVolt portal. Pouziva lokalny AgeVolt database repo ako primarny pracovny zdroj pre schemu, exporty, knowledge_base, changelog a branch/diff workflow. Legacy kontext z ChatGPT projektu triggers cistenie ostava pouzitelny, ale pri konflikte maju vzdy prioritu database/AGENTS.md a database/knowledge_base. Plugin neobsahuje raw DB exporty, produkcne logy ani zakaznicke data.",
     "developerName": "AgeVolt",
     "category": "Productivity",
     "capabilities": [
@@ -35,9 +34,9 @@
     "composerIcon": "./assets/icon.png",
     "logo": "./assets/logo.png",
     "defaultPrompt": [
-      "Uprav existujuci MySQL trigger iba cez dotknute bloky.",
-      "Skontroluj pomaly dotaz a najprv najdi pokrytie indexom.",
-      "Priprav DB zadanie pre Cursor agenta."
+      "Najdi MyAgeVolt DB objekt v database repo a priprav branch + diff.",
+      "Skontroluj pomaly dotaz proti database exportom a metadata.",
+      "Priprav DB zmenu ako changelog kandidat bez DB apply."
     ]
   }
 }

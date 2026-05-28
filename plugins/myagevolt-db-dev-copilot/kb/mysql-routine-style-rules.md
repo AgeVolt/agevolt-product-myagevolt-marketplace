@@ -1,17 +1,17 @@
 # Stylove Pravidla MySQL Rutin
 
-Pouzi tieto pravidla pre MyAgeVolt triggery, procedury, funkcie a eventy.
+Verejne bezpecne pravidla pre postup triggerov/procedur/eventov.
 
-- Pri uprave existujucej rutiny nevracaj cely objekt, ak to pouzivatel vyslovene
-  neziada. Vrat iba zmeneny blok `label: BEGIN ... END;` alebo sustredeny diff
-  a presne instrukcie na vlozenie.
-- Pri vytvoreni noveho objektu vrat cele spustitelne `CREATE` s delimiterom.
-- Pouzi jeden trigger na tabulku/event typ: `<table>_bi`, `<table>_bu`,
-  `<table>_ai`, `<table>_au`.
-- Vacsiu logiku del na pomenovane bloky ako `label: BEGIN ... END;`.
-- `DECLARE` drz v najmensom lokalnom bloku, ktory ho potrebuje.
-- Hned po `main: BEGIN` udrziavaj kratky sumarny komentar; pri zmene vnutornej
-  logiky aktualizuj aj sumare rodicovskych blokov.
-- Komentare pis kratko po slovensky a vysvetli, co blok potrebuje pred sebou a
-  co pripravi pre dalsi blok.
-- Nepridavaj extra ochrany, audit ani `SIGNAL`, ak si to pouzivatel nepyta.
+- Pri uprave existujuceho triggera/procedury negenerovat cely objekt; vratit iba dotknute `label: BEGIN ... END;` bloky alebo diff a presne miesto vlozenia/nahrady.
+- Pri implementacnej praci priprav zmenu v `database` repo ako branch + lokalny
+  diff + changelog kandidat. Samostatny SQL blok je vhodny iba pre vysvetlenie
+  alebo plan, nie ako nahrada repo diffu.
+- Pri vytvoreni noveho objektu musi changelog obsahovat cely `CREATE` skript s
+  delimiterom.
+- Triggery pomenovat `<table>_bi`, `<table>_bu`, `<table>_ai`, `<table>_au`.
+- Procedury volane z triggerov pomenovat `<table>_bi1`, `_bi2` atd. podla poradia.
+- Hned po `main: BEGIN` udrziavat kratky sumarny komentar. Pri zmene bloku skontrolovat aj sumare parent blokov.
+- Komentare pisat kratko po slovensky a popisat, co blok potrebuje pred sebou a co zabezpecuje pre dalsie bloky.
+- Lokalne `DECLARE` drzat v najmensom vnorenom bloku.
+- Ak `triggers cistenie` odporuje `database/knowledge_base/database/mysql-style.md`,
+  pouzi pravidlo z `database`.

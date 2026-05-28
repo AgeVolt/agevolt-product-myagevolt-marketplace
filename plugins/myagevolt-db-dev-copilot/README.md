@@ -1,26 +1,31 @@
-# MyAgeVolt DB Pomocnik
+# MyAgeVolt DB Dev Copilot
 
-Databazovy pomocnik pre MyAgeVolt portal. Pilot vznikol migraciou ChatGPT
-projektu `triggers cistenie` podla planu v `AI projects`.
+Databazovy pomocnik pre MyAgeVolt portal. Primarny pracovny zdroj je lokalny
+repozitar `database`, ktory obsahuje `AGENTS.md`, `knowledge_base/`, `exports/`,
+`changelog/` a workflow pre DB zmeny.
 
 Plugin pokryva:
 
 - MySQL pohlady, triggery, procedury, funkcie a eventy,
 - OCPP RAW prijem a RAW -> `last_*` davkovy tok,
-- jednorazove cistiace SQL pre normalizaciu dat,
+- jednorazove cistiace SQL a normalizaciu dat,
 - DB chyby, FK/InnoDB/ENUM/collation diagnostiku,
 - pomale dotazy a kontrolu indexov,
-- DB/metadatovy kontrakt pre DataGrid.
+- DB/metadatovy kontrakt pre DataGrid,
+- branch + diff workflow pre review, commit a push.
+
+## Zdroje A Priorita
+
+1. `database/AGENTS.md` a `database/knowledge_base/**` su autorita pre aktualne
+   DB pravidla.
+2. `database/exports/**`, `exports/_metadata/**`, `changelog/**` a `drafts/**`
+   su primarne zdroje pre hladanie objektov a pripravu zmeny.
+3. `triggers cistenie` je legacy kontext zluceny do pracovneho postupu. Ak je v
+   konflikte s `database`, vzdy vyhrava `database`.
 
 ## Hranica Sukromnych Podkladov
 
-Surove DB exporty, CSV inventar, produkcne SQL dumpy, logy pomalych dotazov,
-zakaznicke data a plne ChatGPT prepisy nepatria do verejnej Git kopie. Verejne
-bezpecny skill ma pri chybajucej sukromnej KB nahlasit chybajuci pristup alebo
-zdroj a nema si domyslat realnu DB strukturu.
-
-## Pilotne Zdroje
-
-- `AI projects/Celkovy migracny plan ChatGPT projektov.md`
-- `AI projects/migration-staging/chatgpt-projects/triggers-cistenie`
-- ChatGPT projekt `triggers cistenie`
+Surove DB exporty, CSV inventar, produkcne SQL dumpy, logy pomalych dotazov, zakaznicke data a
+plne ChatGPT prepisy nepatria do verejnej Git kopie. Verejne bezpecny skill
+ma pri chybajucom `database` repo alebo business-logic KB nahlasit access gap a
+nema si domyslat realnu DB strukturu.

@@ -1,6 +1,6 @@
 ---
 name: datagrid-db-contract
-description: "Pouzi pri MyAgeVolt DB/metadatovom kontrakte pre DataGrid alebo FE formular: SQL pohlad, general_mysql_column, general_mysql_view, menu_view DB podklady, fe_select_sql, fe_default_sql, fe_hide_sql a pravidla value/default/hide. Nepouzivaj na FE renderCell/MUI/DataGrid UI implementaciu; to patri do agevolt-fe DataGrid skillov."
+description: "Pouzi pri MyAgeVolt DB/metadatovom kontrakte pre DataGrid alebo FE formular cez AgeVolt database repo: SQL pohlad, general_mysql_column, general_mysql_view, menu_view DB podklady, fe_select_sql, fe_default_sql, fe_hide_sql. FE render patri do agevolt-fe."
 ---
 
 # DataGrid DB Kontrakt
@@ -9,24 +9,19 @@ Tento skill riesi iba DB a metadatovu vrstvu pre DataGrid/FE formular. FE render
 MUI, `renderCell`, frontendovy preset a UI pravidla patria do existujucich
 `agevolt-fe` DataGrid skillov.
 
-## Najprv Nacitaj KB
+## Kontext
 
-Precitaj podla potreby:
+Precitaj:
 
+- `../../kb/database-repo-workflow.md`
 - `../../kb/mysql-agevolt-environment.md`
 - `../../kb/mysql-safety-boundaries.md`
 - `../../kb/mysql-schema-inventory.md`
-- pri dynamickych FE hodnotach sukromne poznatky z ChatGPT projektu, ak su
-  dostupne v SharePoint zdroji.
 
-Ak sukromna KB chyba, najdi SharePoint root:
-
-```text
-AI Agent/marketplaces/agevolt-product-myagevolt-marketplace/plugins/myagevolt-db-dev-copilot/kb/
-```
-
-Ak chybaju realne stlpce/tabulky, vypytaj si CSV schemy, `SHOW CREATE` alebo
-MCP iba na citanie.
+V `database` repo citaj `exports/agevolt/config_data/general_mysql_*`,
+`exports/agevolt/config_data/menu_view*`, `exports/agevolt_fe_*_view/**`,
+`exports/agevolt_fe_sp/**` a relevantne `knowledge_base/database/api-contracts.md`.
+`triggers cistenie` je iba legacy kontext; pri konflikte vyhrava `database` repo.
 
 ## Rozsah
 
@@ -44,25 +39,15 @@ Mimo rozsahu:
 - frontendovy preset JSON,
 - `componentMeta`, `renderCell`, onClick UI akcie.
 
-## Pravidla Pre `fe_*_sql`
+## Postup
 
-- `fe_select_sql` vracia minimalne `value` a `label`.
-- `fe_default_sql` vybera jednu default hodnotu, nepridava novu moznost.
-- `fe_hide_sql` vracia JSON array hodnot; `JSON_ARRAY('*')` znamena skryt vsetko.
-- `fe_*_sql` nesmie koncit bodkociarkou, nesmie byt multi-statement a nesmie
-  obsahovat DDL.
-- Kontext citaj z `@ctx`, `agevolt_core.get_space()` alebo `agevolt_core.get_user()`
-  iba ked je to v zadani a schema to podporuje.
+1. Pomenuj precitane database repo subory a aktualny DB kontrakt.
+2. Ak treba zmena, priprav novu branchu, export/config diff a changelog kandidat.
+3. Ukaz zmenene subory, relevantny diff a testovaci SQL plan.
+4. Spytaj sa na commit; po commite sa samostatne spytaj na push.
 
-## Vystup
+## Hranice
 
-Dodaj spustitelny SQL update alebo plan a kratky test:
-
-```sql
-SET @spaceId = '...';
-SET @userId = '...';
-CALL agevolt_fe_sp.general_fe_column_values_sp(...);
-```
-
-Ak treba FE implementaciu, odkaz na `agevolt-fe-datagrid-v4` alebo suvisiaci
-AgeVolt FE skill.
+- DB apply nikdy nerob bez exact `APPROVE WRITE` alebo `APPROVE WRITE PROD`.
+- Ak treba FE implementaciu, odkaz na `agevolt-fe-datagrid-v4` alebo suvisiaci
+  AgeVolt FE skill.

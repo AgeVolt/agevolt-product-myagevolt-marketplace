@@ -1,6 +1,6 @@
 ---
 name: mysql-db-error-triage
-description: "Pouzi pri MyAgeVolt DB chybach, FK constraint problemoch, InnoDB statuse, analyze DB chyb, OCPP/nabijacich DB anomaliach a P1 incidente. Nepouzivaj na bezne zmeny rutin, lookupy iba na citanie, cistenie dat, kontrolu pomalych dotazov ani zadanie pre agenta."
+description: "Pouzi pri MyAgeVolt DB chybach, FK constraint problemoch, InnoDB statuse, DB error analyze, OCPP/nabijacich DB anomaliach a P1 incidente cez AgeVolt database repo. Nepouzivaj na bezne zmeny rutin, lookupy, cistenie dat, vykon ani handoff."
 ---
 
 # Triage MySQL DB Chyb
@@ -11,28 +11,31 @@ Tento skill sluzi na analyzu DB chyb a incidentov.
 
 Precitaj:
 
+- `../../kb/database-repo-workflow.md`
 - `../../kb/mysql-agevolt-environment.md`
 - `../../kb/mysql-schema-inventory.md`
 - `../../kb/mysql-safety-boundaries.md`
 - `../../kb/fk-error-checklist.md`
 
-Ak chyba realna schema alebo log, vypytaj si presnu chybu, `SHOW CREATE`,
-InnoDB status, relevantny SELECT/export alebo MCP iba na citanie.
+V `database` repo citaj relevantne `exports/**`, `exports/_metadata/foreign_keys.tsv`,
+`knowledge_base/database/error-handling.md`, `knowledge_base/database/security.md`
+a suvisiace topic pravidla. `triggers cistenie` pouzi iba ako legacy kontext.
 
 ## Postup
 
 1. Zachyt presnu chybu, objekt, SQL ukazku a cas, ak su dostupne.
 2. Zarad problem: FK/constraint, typ/collation mismatch, chybajuci index,
    runtime chyba rutiny, OCPP/nabijacia anomalia alebo neznama pricina.
-3. Pri FK chybach skontroluj typ/dlzku/signedness stlpcov, collation,
-   referencovany kluc/index, osirele data a InnoDB status.
+3. Over DDL, FK, indexy a relevantne pravidla v `database` repo.
 4. Pri OCPP/nabijacich anomaliach oddel biznis symptom od DB dokazu.
-5. Vystup ma obsahovat potvrdene fakty, hypotezy, dalsie kontroly iba na citanie
-   a riziko.
-6. Ak musi kod alebo repo pozriet iny agent, odovzdaj cez `db-agent-handoff-brief`.
+5. Vystup ma obsahovat potvrdene fakty, hypotezy, precitane repo subory, dalsie
+   kontroly iba na citanie a riziko.
+6. Ak treba fix, priprav branch + diff + changelog kandidat v `database` repo a
+   ukaz zmenene subory.
+7. Spytaj sa na commit; po commite sa samostatne spytaj na push.
 
 ## Hranice
 
-- Nenavrhuj destruktivne opravy pred potvrdenim cez kontroly iba na citanie.
+- Nenavrhuj destruktivne opravy pred kontrolami iba na citanie.
+- DB apply nikdy nerob bez exact `APPROVE WRITE` alebo `APPROVE WRITE PROD`.
 - Nerob z jednej incidentnej hodnoty globalne pravidlo.
-- Neobchadzaj MCP ani credential pravidla.

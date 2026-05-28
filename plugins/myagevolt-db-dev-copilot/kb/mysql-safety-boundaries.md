@@ -1,14 +1,17 @@
-# Bezpecnostne Hranice MySQL
+# Bezpecnostne Hranice
 
-- Do verejneho vystupu nikdy nedavaj surove produkcne exporty, zakaznicke riadky,
-  DB hosty, credentials ani sukromne ChatGPT zdrojove subory.
-- Ak chybaju fakty o scheme, zastav a vypytaj si sukromne CSV/zdroj alebo MCP
-  iba na citanie. Nepredpokladaj presnu schemu z pamati.
-- V1 nema zapisove MCP. Ak sa MCP doplni neskor, zacni iba nastrojmi na citanie
-  pre schemu, objekty a `EXPLAIN`.
-- Nepouzivaj priamy HTTP fallback pre MCP. Ak MCP tooly nie su viditelne,
-  poziadaj o spravnu MCP registraciu/login a novy chat.
-- DDL patri do explicitnych migracnych skriptov, nie do produkcnych triggerov
-  alebo procedur.
-- `SIGNAL`, audit polia a obranne ochrany su opt-in, ak ich nevyzaduju
-  existujuce sukromne pravidla.
+Verejne bezpecne hranice pre DB pomocnika.
+
+- Bez explicitnej poziadavky nepridavat ochranne bloky, SIGNALy ani audit polia.
+- SIGNAL pouzit iba na vyziadanie; message po slovensky.
+- Bez DDL v triggeroch/procedurach, okrem explicitne migracnych skriptov.
+- Produkcne zapisove SQL nedavat cez MCP v MVP. MCP kandidat je iba na citanie pre schemu/objekt/EXPLAIN.
+- Ak chyba schema alebo zdroj, najprv hladat v `database` repo. Ak repo alebo
+  objekt chyba, nahlasit access gap alebo potrebu refreshu.
+- Nepytat pasted `SHOW CREATE` alebo CSV ako prvy krok.
+- Commit a push su samostatne approval gate. Po diff-e sa pytaj na commit; po
+  commite sa samostatne pytaj na push.
+- DB apply nikdy nerob bez presneho approval textu: `APPROVE WRITE` alebo
+  `APPROVE WRITE PROD`.
+- Do verejneho Gitu neukladat surove CSV, DB hosty, zakaznicke data, logy
+  pomalych dotazov ani produkcne exporty.

@@ -1,6 +1,6 @@
 ---
 name: mysql-performance-review
-description: "Pouzi pri MyAgeVolt logoch pomalych dotazov, EXPLAIN analyze, pokryti indexmi, optimalizacii SQL a rozliseni historickeho vs aktualneho vykonoveho problemu. Nepouzivaj na bezne lookupy iba na citanie, trigger/procedure zmeny, cistiace skripty, triage DB chyb ani zadanie pre agenta."
+description: "Pouzi pri MyAgeVolt pomalych dotazoch, EXPLAIN analyze, index coverage a optimalizacii SQL cez AgeVolt database repo. Pri zmene priprav branch + diff + changelog kandidat. Nepouzivaj na lookupy, rutiny, cistenie dat, triage ani handoff."
 ---
 
 # Kontrola Vykonu MySQL
@@ -11,29 +11,32 @@ Tento skill je pre pomale dotazy a pracu s indexmi.
 
 Precitaj:
 
+- `../../kb/database-repo-workflow.md`
 - `../../kb/mysql-agevolt-environment.md`
 - `../../kb/mysql-schema-inventory.md`
 - `../../kb/mysql-performance-index-rules.md`
 - `../../kb/mysql-safety-boundaries.md`
 - `../../kb/slow-query-report-template.md`
 
-Ak chyba schema, indexy, statistiky alebo `EXPLAIN`, nahlas chybajuci
-pristup/zdroj a vypytaj si podklad.
+V `database` repo citaj `exports/_metadata/table_sizes.tsv`, FK/index metadata,
+relevantne DDL exporty, `knowledge_base/database/data-access.md`,
+`knowledge_base/database/mysql-style.md` a `knowledge_base/quality/testing.md`.
+`triggers cistenie` je iba legacy kontext; pri konflikte vyhrava `database` repo.
 
 ## Postup
 
-1. Pred radenim zoskup opakovane vzory dotazov.
-2. Rad podla dopadu na pouzivatela, frekvencie, rows examined, latencie a rizika
-   horucej cesty.
-3. Pred navrhom novych indexov skontroluj existujuce pokrytie indexmi.
+1. Zoskup opakovane vzory dotazov a pomenuj pouzivatelsky dopad.
+2. Rad podla frekvencie, rows examined, latencie, horucej cesty a rizika.
+3. Pred navrhom indexu pomenuj existujuce indexy alebo metadata, ktore dotaz
+   pokryvaju alebo nepokryvaju.
 4. Preferuj upravu dotazu alebo predikatu, ked problem vyriesi s mensim dopadom.
-5. Oznac neistoty, ktore potrebuju `EXPLAIN`, statistiky tabuliek alebo MCP iba
-   na citanie.
-6. Vystup ma byt strucne hlasenie: problem, dokaz, pravdepodobna pricina,
-   minimalna oprava a overenie.
+5. Ak treba DB zmenu, priprav v `database` repo novu branchu, export/config diff
+   a changelog kandidat.
+6. Ukaz precitane subory, diff a overovaci plan.
+7. Spytaj sa na commit; po commite sa samostatne spytaj na push.
 
 ## Hranice
 
-- Nevymyslaj nazvy indexov ani kardinalitu bez schemy/statistik.
-- DDL nenavrhuj ako finalny zasah bez oznacenia, ze ide o migracneho kandidata.
+- Nevymyslaj nazvy indexov ani kardinalitu bez repo metadata alebo EXPLAIN.
+- DB apply nikdy nerob bez exact `APPROVE WRITE` alebo `APPROVE WRITE PROD`.
 - Ak ide o constraint/runtime chybu, pouzi `mysql-db-error-triage`.

@@ -1,19 +1,24 @@
 # Inventar MySQL Schemy
 
-Tento verejny subor je iba routing poznamka. Zamerne neobsahuje sukromny
-inventar realnej schemy.
+Primarny inventar MyAgeVolt DB je v AgeVolt `database` repozitari.
 
-Ocakavane sukromne zdroje z ChatGPT projektu `triggers cistenie`:
+Najprv najdi a citaj:
 
-- `90_tables.csv`
-- `91_columns.csv`
-- `92_statistics.csv`
-- `93_key_usage.csv`
-- `94_fk_rules.csv`
-- `95_triggers.csv`
-- `96_routines.csv`
-- `97_events.csv`
+- `database/AGENTS.md`
+- `database/knowledge_base/index.md`
+- `database/knowledge_base/registry.yaml`
+- `database/knowledge_base/reference/**`
+- `database/exports/_metadata/**`
+- `database/exports/<schema>/tables/*.sql`
+- `database/exports/<schema>/views/*.sql`
+- `database/exports/<schema>/routines/*.sql`
+- `database/exports/<schema>/triggers/*.sql`
+- `database/exports/<schema>/events/*.sql`
+- `database/exports/<schema>/config_data/*.sql`
+- `database/changelog/*.sql`
 
-Ak tieto subory nie su dostupne, skilly nesmu hadat fakty o scheme. Vypytaj si
-chybajuce CSV subory alebo pouzi schvalene MCP iba na citanie, ked bude
-dostupne.
+Nepytaj si `SHOW CREATE` alebo CSV ako prvy krok. Ak objekt v repo nenajdes,
+nahlas chybajuci objekt, potrebu refreshu alebo access gap.
+
+Legacy CSV a ChatGPT podklady z `triggers cistenie` mozu pomoct ako historicky
+kontext, ale pri konflikte vyhrava `database` repo.

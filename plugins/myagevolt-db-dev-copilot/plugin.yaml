@@ -1,7 +1,7 @@
 id: myagevolt-db-dev-copilot
 display_name: "MyAgeVolt DB Pomocnik"
 status: active-pilot
-purpose: "Databazova praca pre MyAgeVolt: MySQL pohlady, triggery, procedury, eventy, OCPP RAW/davkovy tok, cistenie dat, DB chyby, pomale dotazy a DataGrid DB kontrakty."
+purpose: "Databazova praca pre MyAgeVolt cez AgeVolt database repo: MySQL pohlady, triggery, procedury, eventy, OCPP RAW/davkovy tok, cistenie dat, DB chyby, pomale dotazy, DataGrid DB kontrakty a branch/diff workflow."
 skills:
   - id: mysql-routine-change-copilot
     status: active-pilot
@@ -24,11 +24,16 @@ kb:
   - mysql-performance-index-rules.md
   - mysql-safety-boundaries.md
   - mysql-schema-inventory.md
+  - database-repo-workflow.md
   - cleanup-examples.md
   - fk-error-checklist.md
   - handoff-template.md
   - slow-query-report-template.md
+  - mysql-project-instructions-triggers-cistenie.md
   - mysql-access-gaps.md
+  - triggers-cistenie-chat-review.csv
+  - triggers-cistenie-chat-index-full.csv
+  - triggers-cistenie-source-manifest.csv
 public_git_kb:
   - README.md
   - mysql-agevolt-environment.md
@@ -36,19 +41,23 @@ public_git_kb:
   - mysql-performance-index-rules.md
   - mysql-safety-boundaries.md
   - mysql-schema-inventory.md
+  - database-repo-workflow.md
   - cleanup-examples.md
   - fk-error-checklist.md
   - handoff-template.md
   - slow-query-report-template.md
   - mysql-access-gaps.md
-private_kb_source: "AI Agent/marketplaces/agevolt-product-myagevolt-marketplace/plugins/myagevolt-db-dev-copilot/kb"
 private_sharepoint_only_kb:
   - mysql-project-instructions-triggers-cistenie.md
   - triggers-cistenie-chat-review.csv
   - triggers-cistenie-chat-index-full.csv
   - triggers-cistenie-source-manifest.csv
 rules:
+  database_repo_priority_over_triggers_cistenie: true
+  database_repo_required_for_object_lookup: true
+  branch_diff_before_commit_push: true
   private_kb_required_for_real_schema_claims: true
   public_git_contains_no_raw_db_exports: true
   no_write_mcp_in_mvp: true
-  ask_for_csv_or_readonly_mcp_when_schema_missing: true
+  access_gap_when_database_repo_missing_schema: true
+  no_pasted_show_create_or_csv_as_first_step: true
