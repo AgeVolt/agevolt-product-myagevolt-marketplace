@@ -15,6 +15,7 @@ Precitaj:
 - `../../kb/mysql-agevolt-environment.md`
 - `../../kb/mysql-schema-inventory.md`
 - `../../kb/mysql-safety-boundaries.md`
+- `../../kb/mysql-production-ddl-safety.md`
 - `../../kb/fk-error-checklist.md`
 
 V `database` repo citaj relevantne `exports/**`, `exports/_metadata/foreign_keys.tsv`,
@@ -34,9 +35,11 @@ namiesto fixu zo stareho snapshotu.
 4. Pri OCPP/nabijacich anomaliach oddel biznis symptom od DB dokazu.
 5. Vystup ma obsahovat potvrdene fakty, hypotezy, precitane repo subory, dalsie
    kontroly iba na citanie a riziko.
-6. Ak treba fix, priprav branch + diff + changelog kandidat v `database` repo a
+6. Ak treba column/index/FK/table DDL fix, rozdel ho podla
+   `mysql-production-ddl-safety.md` a pomenuj metadata lock risk.
+7. Ak treba fix, priprav branch + diff + changelog kandidat v `database` repo a
    ukaz zmenene subory.
-7. Spytaj sa na commit; po commite sa samostatne spytaj na push.
+8. Spytaj sa na commit; po commite sa samostatne spytaj na push.
 
 ## Hranice
 

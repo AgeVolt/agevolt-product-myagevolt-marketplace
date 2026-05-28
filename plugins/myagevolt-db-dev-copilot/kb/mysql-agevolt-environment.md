@@ -13,4 +13,6 @@ primarne v AgeVolt `database` repozitari.
 - Pri novych objektoch pouzivat `DELIMITER //` a definera podla internych DB pravidiel projektu.
 - Toto nie je inventar realnej schemy. Najprv nacitaj `database/exports/**` a
   `database/exports/_metadata/**`.
+- `exports/**` su snapshoty. Pri priamo menenom objekte musi skill pred zmenou
+  refreshnut alebo manualne overit live definition a zosuladit export.
 - `triggers cistenie` je legacy kontext. Pri konflikte vyhrava `database`.

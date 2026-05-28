@@ -1,5 +1,17 @@
 # Revision history
 
+## 2026-05-28 - Production DDL Safety Sync
+
+- Database repo dotiahnuty na `08e9e66`; nove pravidla z
+  `knowledge_base/database/db-change-workflow.md` a `mysql-style.md` su
+  premietnute do pluginu.
+- Pridana KB `mysql-production-ddl-safety.md` pre delene produkcne `ALTER TABLE`,
+  online DDL clauses, lock timeouty a `pt-online-schema-change`/`gh-ost` review.
+- Workflow vyzaduje refresh alebo manualne overenie priamo meneneho objektu pred
+  DB zmenou; `exports/**` su snapshot, live DB je zdroj pravdy.
+- Business-logic KB je povinny vstup pri zmenach domenoveho spravania; ak
+  `../business-logic` chyba, skill ma zastavit s access gapom.
+
 ## 2026-05-28 - Latest Main Sync Gate
 
 - Doplnene tvrde pravidlo, ze database repo sa pred objektovym lookupom a

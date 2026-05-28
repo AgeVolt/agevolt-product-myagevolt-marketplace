@@ -22,13 +22,17 @@ Pred DB analyzou alebo implementaciou v `database` repo precitaj:
 - `AGENTS.md`
 - `knowledge_base/index.md`
 - `knowledge_base/registry.yaml`
+- `knowledge_base/rule-governance.md`
+- `../business-logic/knowledge_base/standards/repository-bootloader.md`, ak je
+  sibling `../business-logic` dostupny
 - relevantne KB subory z `knowledge_base/database/**`, `knowledge_base/topics/**`,
   `knowledge_base/reference/**`, `knowledge_base/quality/**` alebo
   `knowledge_base/workflows/**`
 
 Ak zmena ovplyvnuje produktove spravanie, billing, opravnenia, stanice,
 wallet/payments, notifikacie, reporting/export semantiku alebo validacie,
-precitaj aj sibling `../business-logic`. Ak nie je dostupny, nahlas access gap.
+precitaj aj sibling `../business-logic/knowledge_base/index.md`,
+`registry.yaml` a `catalog/index.md`. Ak nie je dostupny, nahlas access gap.
 
 `.cursor/rules` v database repo su iba pointere. Autorita je `AGENTS.md` a
 `knowledge_base/**`.
@@ -86,12 +90,20 @@ Pri poziadavke na zmenu DB objektu alebo konfiguracie:
 2. Ak je working tree cisty a hlavna branch je pullnuta, vytvor novu branchu
    `codex/db-<kratky-slug>` z aktualneho mainu. Ak cisty nie je alebo nie si na
    hlavnej branchi, zastav a ukaz existujuce zmeny/branch stav.
-3. Uprav lokalny export, KB alebo config podla pravidiel database repo.
-4. Pri DB zmene priprav changelog kandidat
+3. Pri priamo menenom DB objekte najprv refreshni alebo manualne over live
+   definiciu: `python scripts/refresh.py --object <schema>.<name>`.
+   Ak refresh nejde, manualne spusti vhodne `SHOW CREATE ...`, zosulad export a
+   zachovaj LF line endings. Nepokracuj z neovereneho stareho snapshotu.
+4. Ak refresh/manualne overenie ukaze rozdiel medzi live DB a exportom, najprv
+   aktualizuj export a pomenuj discrepanciu.
+5. Uprav lokalny export, KB alebo config podla pravidiel database repo.
+6. Pri DB zmene priprav changelog kandidat
    `changelog/YYYYMMDD_HHMMSS__<schema>__<short_description>.sql`.
-5. Ukaz pouzivatelovi, ktore subory boli zmenene a relevantny diff.
-6. Spytaj sa na commit. Bez potvrdenia necommituj.
-7. Po commite sa samostatne spytaj na push. Bez potvrdenia nepushuj.
+7. Pri config/reference table data zmene re-dumpni relevantny subor pod
+   `exports/<schema>/config_data/`.
+8. Ukaz pouzivatelovi, ktore subory boli zmenene a relevantny diff.
+9. Spytaj sa na commit. Bez potvrdenia necommituj.
+10. Po commite sa samostatne spytaj na push. Bez potvrdenia nepushuj.
 
 Commit/push approval nie je DB write approval.
 

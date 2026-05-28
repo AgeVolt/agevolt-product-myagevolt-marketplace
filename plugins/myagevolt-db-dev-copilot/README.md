@@ -13,6 +13,7 @@ Plugin pokryva:
 - pomale dotazy a kontrolu indexov,
 - DB/metadatovy kontrakt pre DataGrid,
 - latest-main sync gate pred objektovym lookupom a branchou,
+- produkcne DDL safety: delene `ALTER TABLE`, online/lock review a kratke lock timeouty,
 - branch + diff workflow pre review, commit a push.
 
 ## Zdroje A Priorita
@@ -24,7 +25,12 @@ Plugin pokryva:
 3. Pred implementacnym diffom musi `database` repo prejst cez `git fetch origin`
    a `git pull --rebase --ff-only` na hlavnej branchi. Ak je repo na feature
    branchi alebo ma lokalne zmeny, skill musi zastavit a ukazat blocker.
-4. `triggers cistenie` je legacy kontext zluceny do pracovneho postupu. Ak je v
+4. Pri priamom dotyku DB objektu je live DB zdroj pravdy. Export treba pred
+   zmenou refreshnut cez `scripts/refresh.py --object` alebo manualne overit a
+   zosuladit.
+5. Produkcne table DDL musi byt rozdelene na male samostatne kroky. Lock risk
+   a online schema change strategia musia byt pomenovane pred apply.
+6. `triggers cistenie` je legacy kontext zluceny do pracovneho postupu. Ak je v
    konflikte s `database`, vzdy vyhrava `database`.
 
 ## Hranica Sukromnych Podkladov

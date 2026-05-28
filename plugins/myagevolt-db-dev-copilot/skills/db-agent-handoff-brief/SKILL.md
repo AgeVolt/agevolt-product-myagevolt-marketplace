@@ -13,6 +13,7 @@ Precitaj:
 
 - `../../kb/database-repo-workflow.md`
 - `../../kb/mysql-safety-boundaries.md`
+- `../../kb/mysql-production-ddl-safety.md`
 - `../../kb/handoff-template.md`
 
 Ak treba realne tabulky alebo objekty, najprv hladaj v `database` repo. Ak repo
@@ -36,8 +37,10 @@ alebo ma lokalne zmeny, oznac to ako blocker.
    pre cielove publikum.
 5. Najprv definuj kontroly iba na citanie.
 6. Ak moze byt potrebny zapis, vyzaduj branch + diff a explicitne potvrdenie cloveka.
-7. Oddel approval stav: commit, push a DB apply.
-8. Na konci povedz, aky vystup sa od dalsieho agenta ocakava.
+7. Ak ide o DDL, zahrn split-step plan, lock timeouty a online schema change
+   rozhodnutie.
+8. Oddel approval stav: commit, push a DB apply.
+9. Na konci povedz, aky vystup sa od dalsieho agenta ocakava.
 
 ## Hranice
 

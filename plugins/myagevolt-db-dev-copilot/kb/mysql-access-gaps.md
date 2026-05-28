@@ -40,6 +40,11 @@ Ak DB zmena zasahuje domenu, uctovanie, nabijanie, OCPP spracovanie alebo stavov
 model a `../business-logic` nie je dostupny, zastav a vypis access gap. Nevymyslaj
 business pravidla iba zo stareho chatu.
 
+Aktualny `database` bootloader ocakava aj
+`../business-logic/knowledge_base/standards/repository-bootloader.md`. Ak nie je
+dostupny a zmena ma implementacny alebo domenovy dopad, vypis access gap namiesto
+ticheho pokracovania.
+
 ## Public Git Pravidlo
 
 Do verejneho Gitu patria iba verejne bezpecne workflow pravidla a access-gap popisy.

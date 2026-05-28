@@ -17,6 +17,7 @@ Najprv precitaj:
 - `../../kb/mysql-routine-style-rules.md`
 - `../../kb/mysql-schema-inventory.md`
 - `../../kb/mysql-safety-boundaries.md`
+- `../../kb/mysql-production-ddl-safety.md`, ak ide o migracne DDL alebo table zmenu
 
 V `database` repo potom precitaj `AGENTS.md`, `knowledge_base/index.md`,
 `knowledge_base/registry.yaml` a relevantne pravidla, hlavne
@@ -36,19 +37,22 @@ alebo ma lokalne zmeny, zastav a ukaz blocker.
 
 1. Vykonaj latest-main sync gate a uved branch/base commit.
 2. Najdi DB objekt v `database/exports/<schema>/{routines,triggers,events}`.
-3. Ak objekt chyba, nahlas access gap alebo potrebu refreshu; nepytaj pasted
+3. Pred zmenou objekt refreshni cez `python scripts/refresh.py --object
+   <schema>.<name>` alebo manualne over `SHOW CREATE ...` a zosulad export.
+4. Ak objekt chyba, nahlas access gap alebo potrebu refreshu; nepytaj pasted
    `SHOW CREATE` ako prvy krok.
-4. Ak sync gate presiel, priprav branch `codex/db-<kratky-slug>` z aktualneho
+5. Ak sync gate presiel, priprav branch `codex/db-<kratky-slug>` z aktualneho
    mainu.
-5. Pri existujucom objekte uprav iba dotknuty `label: BEGIN ... END;` blok alebo
+6. Pri existujucom objekte uprav iba dotknuty `label: BEGIN ... END;` blok alebo
    sustredeny diff v exporte.
-6. Pri novom objekte priprav kompletny export a changelog kandidat s
+7. Pri novom objekte priprav kompletny export a changelog kandidat s
    `DELIMITER //` a `DEFINER=\`dev_admin\`@\`%\``.
-7. Vzdy priprav `changelog/YYYYMMDD_HHMMSS__<schema>__<short_description>.sql`
+8. Vzdy priprav `changelog/YYYYMMDD_HHMMSS__<schema>__<short_description>.sql`
    pre DB zmenu.
-8. Ukaz, ktore subory boli zmenene, relevantny diff a precitane KB.
-9. Spytaj sa na commit. Bez potvrdenia necommituj.
-10. Po commite sa samostatne spytaj na push. Bez potvrdenia nepushuj.
+9. Pri migracnom DDL pouzi produkcny DDL safety checklist.
+10. Ukaz, ktore subory boli zmenene, relevantny diff a precitane KB.
+11. Spytaj sa na commit. Bez potvrdenia necommituj.
+12. Po commite sa samostatne spytaj na push. Bez potvrdenia nepushuj.
 
 ## Hranice
 

@@ -36,7 +36,9 @@ hlavnom branchi a `git pull --rebase --ff-only`.
 6. Pri ENUM cisteni rataj s internou prazdnou ENUM hodnotou v MySQL.
 7. Ak ide o DB zmenu, priprav branch + diff + changelog kandidat v `database`
    repo a ukaz zmenene subory.
-8. Spytaj sa na commit; po commite sa samostatne spytaj na push.
+8. Mass `UPDATE` bez PK filtra a `DELETE` bez PK-based `WHERE` je blocker bez
+   explicitneho override.
+9. Spytaj sa na commit; po commite sa samostatne spytaj na push.
 
 ## Hranice
 

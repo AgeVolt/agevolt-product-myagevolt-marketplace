@@ -10,6 +10,7 @@ Tieto subory sa synchronizuju aj do Git marketplace:
 - `mysql-agevolt-environment.md`
 - `mysql-routine-style-rules.md`
 - `mysql-performance-index-rules.md`
+- `mysql-production-ddl-safety.md`
 - `mysql-safety-boundaries.md`
 - `mysql-schema-inventory.md`
 - `cleanup-examples.md`

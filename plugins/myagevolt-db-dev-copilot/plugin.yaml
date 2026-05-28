@@ -1,7 +1,7 @@
 id: myagevolt-db-dev-copilot
 display_name: "MyAgeVolt DB Copilot"
 status: active-pilot
-purpose: "Databazova praca pre MyAgeVolt cez AgeVolt database repo: MySQL pohlady, triggery, procedury, eventy, OCPP RAW/davkovy tok, cistenie dat, DB chyby, pomale dotazy, DataGrid DB kontrakty, latest-main sync gate a branch/diff workflow."
+purpose: "Databazova praca pre MyAgeVolt cez AgeVolt database repo: MySQL pohlady, triggery, procedury, eventy, OCPP RAW/davkovy tok, cistenie dat, DB chyby, pomale dotazy, DataGrid DB kontrakty, latest-main sync gate, produkcne DDL safety a branch/diff workflow."
 skills:
   - id: mysql-routine-change-copilot
     status: active-pilot
@@ -22,6 +22,7 @@ kb:
   - mysql-agevolt-environment.md
   - mysql-routine-style-rules.md
   - mysql-performance-index-rules.md
+  - mysql-production-ddl-safety.md
   - mysql-safety-boundaries.md
   - mysql-schema-inventory.md
   - database-repo-workflow.md
@@ -39,6 +40,7 @@ public_git_kb:
   - mysql-agevolt-environment.md
   - mysql-routine-style-rules.md
   - mysql-performance-index-rules.md
+  - mysql-production-ddl-safety.md
   - mysql-safety-boundaries.md
   - mysql-schema-inventory.md
   - database-repo-workflow.md
@@ -63,3 +65,5 @@ rules:
   no_pasted_show_create_or_csv_as_first_step: true
   latest_origin_main_required_before_database_branch: true
   stop_on_dirty_or_feature_branch_before_sync: true
+  production_ddl_requires_split_steps_and_lock_review: true
+  live_db_refresh_required_for_direct_object_changes: true

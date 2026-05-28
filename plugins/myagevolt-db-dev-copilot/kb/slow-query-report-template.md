@@ -6,4 +6,5 @@
 4. Minimalny navrh upravy dotazu/indexu.
 5. Database repo subory, z ktorych navrh vychadza.
 6. Rizika a co overit cez `EXPLAIN`, statistiky alebo read-only DB pristup.
-7. Ak ide o zmenu, branch/changelog kandidat a commit/push approval stav.
+7. Ak ide o index/table DDL, produkcny split-step plan a lock risk.
+8. Ak ide o zmenu, branch/changelog kandidat a commit/push approval stav.

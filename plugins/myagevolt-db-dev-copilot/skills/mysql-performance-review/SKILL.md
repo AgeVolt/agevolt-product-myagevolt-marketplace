@@ -15,6 +15,7 @@ Precitaj:
 - `../../kb/mysql-agevolt-environment.md`
 - `../../kb/mysql-schema-inventory.md`
 - `../../kb/mysql-performance-index-rules.md`
+- `../../kb/mysql-production-ddl-safety.md`
 - `../../kb/mysql-safety-boundaries.md`
 - `../../kb/slow-query-report-template.md`
 
@@ -34,10 +35,13 @@ Pred analyzou, ktora moze skoncit diffom, vykonaj `Repo Sync Gate` z
 3. Pred navrhom indexu pomenuj existujuce indexy alebo metadata, ktore dotaz
    pokryvaju alebo nepokryvaju.
 4. Preferuj upravu dotazu alebo predikatu, ked problem vyriesi s mensim dopadom.
-5. Ak treba DB zmenu, priprav v `database` repo novu branchu, export/config diff
+5. Ak treba produkcny index alebo table DDL, rozdel ho podla
+   `mysql-production-ddl-safety.md`; index nesmie byt v tom istom `ALTER TABLE`
+   ako column alebo FK zmena.
+6. Ak treba DB zmenu, priprav v `database` repo novu branchu, export/config diff
    a changelog kandidat.
-6. Ukaz precitane subory, diff a overovaci plan.
-7. Spytaj sa na commit; po commite sa samostatne spytaj na push.
+7. Ukaz precitane subory, diff, DDL lock risk a overovaci plan.
+8. Spytaj sa na commit; po commite sa samostatne spytaj na push.
 
 ## Hranice
 

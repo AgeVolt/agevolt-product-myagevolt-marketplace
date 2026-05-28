@@ -17,6 +17,7 @@ Precitaj:
 - `../../kb/mysql-agevolt-environment.md`
 - `../../kb/mysql-safety-boundaries.md`
 - `../../kb/mysql-schema-inventory.md`
+- `../../kb/mysql-production-ddl-safety.md`, ak kontrakt vyzaduje table/index DDL
 
 V `database` repo citaj `exports/agevolt/config_data/general_mysql_*`,
 `exports/agevolt/config_data/menu_view*`, `exports/agevolt_fe_*_view/**`,
@@ -47,9 +48,11 @@ Mimo rozsahu:
 ## Postup
 
 1. Pomenuj latest-main sync stav, precitane database repo subory a aktualny DB kontrakt.
-2. Ak treba zmena, priprav novu branchu, export/config diff a changelog kandidat.
-3. Ukaz zmenene subory, relevantny diff a testovaci SQL plan.
-4. Spytaj sa na commit; po commite sa samostatne spytaj na push.
+2. Pri zmene config/reference data re-dumpni relevantny `exports/<schema>/config_data/` subor.
+3. Ak treba table/index DDL, rozdel ho podla produkcneho DDL safety checklistu.
+4. Ak treba zmena, priprav novu branchu, export/config diff a changelog kandidat.
+5. Ukaz zmenene subory, relevantny diff a testovaci SQL plan.
+6. Spytaj sa na commit; po commite sa samostatne spytaj na push.
 
 ## Hranice
 

@@ -1,7 +1,7 @@
 {
   "name": "myagevolt-db-dev-copilot",
-  "version": "0.2.1",
-  "description": "AgeVolt plugin pre databazovu pracu na MyAgeVolt cez database repo: MySQL rutiny, schema/export lookup, vykonova diagnostika, OCPP RAW/davkovy tok, DataGrid DB kontrakty, latest-main sync gate a branch/diff workflow.",
+  "version": "0.2.2",
+  "description": "AgeVolt plugin pre databazovu pracu na MyAgeVolt cez database repo: MySQL rutiny, schema/export lookup, vykonova diagnostika, OCPP RAW/davkovy tok, DataGrid DB kontrakty, latest-main sync gate, produkcne DDL safety a branch/diff workflow.",
   "author": {
     "name": "AgeVolt",
     "email": "zustiak@agevolt.com",
@@ -22,7 +22,7 @@
   "interface": {
     "displayName": "MyAgeVolt DB Copilot",
     "shortDescription": "MySQL repo workflow for MyAgeVolt.",
-    "longDescription": "Database copilot for the MyAgeVolt portal. It uses the local AgeVolt database repository as the primary working source for schema, exports, knowledge_base, changelog, and branch/diff workflow. Before implementation it requires a latest-main fetch/pull gate or an explicit blocker. Legacy context from the ChatGPT project triggers cistenie remains usable, but database/AGENTS.md and database/knowledge_base always win on conflicts. The plugin does not contain raw DB exports, production logs, or customer data.",
+    "longDescription": "Database copilot for the MyAgeVolt portal. It uses the local AgeVolt database repository as the primary working source for schema, exports, knowledge_base, changelog, and branch/diff workflow. Before implementation it requires a latest-main fetch/pull gate, object refresh or manual verification, and production DDL safety review. Legacy context from the ChatGPT project triggers cistenie remains usable, but database/AGENTS.md and database/knowledge_base always win on conflicts. The plugin does not contain raw DB exports, production logs, or customer data.",
     "developerName": "AgeVolt",
     "category": "Productivity",
     "capabilities": [
@@ -36,7 +36,7 @@
     "defaultPrompt": [
       "Find a MyAgeVolt DB object from the latest database main and prepare a branch + diff.",
       "Review a slow query against database exports and metadata.",
-      "Prepare a DB change as a changelog candidate without DB apply."
+      "Prepare a DB change with refresh, DDL safety review, and no DB apply."
     ]
   }
 }
