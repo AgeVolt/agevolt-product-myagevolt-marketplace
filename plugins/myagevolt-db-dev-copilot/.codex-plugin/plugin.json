@@ -1,6 +1,6 @@
 {
   "name": "myagevolt-db-dev-copilot",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "AgeVolt plugin pre databazovu pracu na MyAgeVolt cez database repo: MySQL rutiny, schema/export lookup, vykonova diagnostika, OCPP RAW/davkovy tok, DataGrid DB kontrakty, latest-main sync gate, produkcne DDL safety a branch/diff workflow.",
   "author": {
     "name": "AgeVolt",

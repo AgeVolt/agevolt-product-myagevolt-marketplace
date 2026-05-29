@@ -1,5 +1,12 @@
 # Revision history
 
+## 2026-05-29 - DataGrid View Naming
+
+- Do `datagrid-db-contract` skillu doplnene pravidlo, ze SQL view export musi
+  pouzivat rovnaky nazov ako automaticky `menu_view_ensure_views` placeholder.
+- Pri oprave nazvu sa ma zly manualny view cleanupnut a SELECT presunut pod
+  automaticky nazov z `menu_view.view_name`.
+
 ## 2026-05-28 - Production DDL Safety Sync
 
 - Database repo dotiahnuty na `08e9e66`; nove pravidla z

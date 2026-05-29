@@ -45,6 +45,32 @@ Mimo rozsahu:
 - frontendovy preset JSON,
 - `componentMeta`, `renderCell`, onClick UI akcie.
 
+## Nazvy DataGrid FE View
+
+Pri DataGrid view, ktore je naviazane na `menu_view`, najprv odvod realny nazov
+SQL view z automatickeho mechanizmu `menu_view_ensure_views` /
+`menu_view.view_name`. Nevymyslaj paralelny manualny nazov.
+
+Povinny postup:
+
+1. Vytvor alebo uprav `menu_view.view_name` s cielovym automatickym nazvom,
+   napriklad `agevolt_fe_master_view.general_broker_offers_data_fe`.
+2. Spusti alebo priprav `agevolt_core.menu_view_ensure_views`, aby vznikol
+   placeholder s rovnakym nazvom, ak este neexistuje.
+3. Export SQL view vytvor pod tym istym nazvom ako automaticky placeholder a
+   tymto exportom prepis SELECT. Nepouzivaj singular/plural variant bokom.
+4. `general_mysql_view`, `general_insert_update_delete_table`,
+   `general_mysql_view_column`, `menu_view.meta` a default preset musia ukazovat
+   na ten isty nazov.
+5. Ak sa opravuje omyl v nazve, neponechaj novy manualny view vedla
+   automatickeho. Stary zly nazov iba cleanupni v changelogu a export presun
+   pod automaticky nazov.
+
+Kontrola pre commit: `menu_view.view_name`, `menu_view.meta.Prefer`,
+`general_mysql_view.view`, IUD `view` a subor
+`exports/agevolt_fe_*_view/views/<view>.sql` musia pouzivat presne rovnaky
+`<schema>.<view>`.
+
 ## Postup
 
 1. Pomenuj latest-main sync stav, precitane database repo subory a aktualny DB kontrakt.
