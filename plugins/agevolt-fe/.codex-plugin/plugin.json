@@ -1,0 +1,43 @@
+{
+  "name": "agevolt-fe",
+  "version": "1.3.0",
+  "description": "AgeVolt frontend doplnok pre Codex, ktory smeruje agentov na zivu FE knowledge base, web-portal pravidla a business-logic bootstrap.",
+  "author": {
+    "name": "AgeVolt",
+    "email": "zustiak@agevolt.com",
+    "url": "https://www.agevolt.com"
+  },
+  "homepage": "https://github.com/AgeVolt/agevolt-product-myagevolt-marketplace",
+  "repository": "https://github.com/AgeVolt/agevolt-product-myagevolt-marketplace",
+  "license": "UNLICENSED",
+  "keywords": [
+    "agevolt",
+    "frontend",
+    "web-portal",
+    "knowledge-base",
+    "codex",
+    "skills"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "AgeVolt FE",
+    "shortDescription": "Frontend KB router for AgeVolt projects.",
+    "longDescription": "AgeVolt FE plugin for Codex. It does not contain a static rule copy; it routes agents to current AGENTS.md, knowledge_base, registry.yaml, and business-logic rules from local repositories.",
+    "developerName": "AgeVolt",
+    "category": "Developer",
+    "capabilities": [
+      "Interactive",
+      "Read",
+      "Write"
+    ],
+    "websiteURL": "https://www.agevolt.com",
+    "brandColor": "#280046",
+    "composerIcon": "./assets/icon.png",
+    "logo": "./assets/logo.png",
+    "defaultPrompt": [
+      "Load AgeVolt FE rules before working in the web-portal repository.",
+      "Review a Dynamic DataGrid V4 view or preset against the live KB.",
+      "Refactor a static settings page using the AgeVolt FE settings rules."
+    ]
+  }
+}

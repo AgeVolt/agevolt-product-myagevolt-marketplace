@@ -1,0 +1,34 @@
+id: agevolt-fe
+display_name: "AgeVolt FE"
+status: active-migrated
+purpose: "Frontendova praca pre AgeVolt cez web-portal a business-logic knowledge base: UI refaktor, settings, Dynamic DataGrid V4, lokalizacia, dashboardy, shared komponenty a E2E charging scenare."
+skills:
+  - id: agevolt-fe
+    status: active
+  - id: agevolt-fe-settings
+    status: active
+  - id: agevolt-fe-datagrid-v4
+    status: active
+  - id: agevolt-datagrid-v4-view-designer
+    status: active
+  - id: agevolt-datagrid-v4-technical
+    status: active
+  - id: agevolt-datagrid-v4-audit
+    status: active
+  - id: agevolt-charging-simulator-e2e
+    status: active
+references:
+  - references/agevolt-fe-sources.yaml
+  - references/indexes/agevolt-fe.md
+public_git_references:
+  - references/agevolt-fe-sources.yaml
+  - references/indexes/agevolt-fe.md
+public_git_assets:
+  - assets/icon.png
+  - assets/logo.png
+rules:
+  repository_kb_is_authority: true
+  business_logic_required_for_product_behavior: true
+  public_git_contains_no_credentials_or_customer_data: true
+  mcp_removed_from_migration: true
+  stop_when_authoritative_kb_missing: true

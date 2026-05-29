@@ -1,0 +1,31 @@
+version: 1
+description: "Authoritative AgeVolt FE knowledge base sources. Plugin skills route to these sources instead of copying rules."
+
+sources:
+  web_portal:
+    name: "web-portal"
+    repo_url: "git@github.com:AgeVolt/web-portal.git"
+    branch: "main"
+    local_candidates:
+      - "%USERPROFILE%/Desktop/Work/web-portal"
+      - "../web-portal"
+    paths:
+      - "AGENTS.md"
+      - "README.md"
+      - "knowledge_base"
+  business_logic:
+    name: "business-logic"
+    repo_url: "git@github.com:AgeVolt/business-logic.git"
+    branch: "main"
+    local_candidates:
+      - "%USERPROFILE%/Desktop/Work/business-logic"
+      - "../business-logic"
+    paths:
+      - "AGENTS.md"
+      - "knowledge_base"
+
+rules:
+  - "The plugin is not rule authority."
+  - "The authority is the local repo KB at a known path and commit."
+  - "Agents must state which source and commit/path they used before implementation."
+  - "If no authoritative source can be read, stop and report a blocker."

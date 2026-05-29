@@ -1,0 +1,10 @@
+interface:
+  display_name: "AgeVolt DataGrid V4 View Designer"
+  short_description: "Design view and default preset specifications from product input."
+  icon_small: "./assets/icon.png"
+  icon_large: "./assets/logo.png"
+  brand_color: "#280046"
+  default_prompt: "Use $agevolt-datagrid-v4-view-designer to design a DataGrid V4 view and default preset from a request."
+
+policy:
+  allow_implicit_invocation: true

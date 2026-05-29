@@ -6,7 +6,8 @@ Ma sluzit ludom, ktori pracuju s myAgeVolt portalom ako produktom: produktova KB
 
 Tento marketplace nema byt vseobecny developersky nastrojovy balik pre celu firmu. Patri sem len to, co priamo suvisi s myAgeVolt portalom.
 
-Aktualny stav: aktivny pilot s prvym pluginom `myagevolt-db-dev-copilot`.
+Aktualny stav: aktivny build s DB copilotom a migrovanym frontend pluginom
+`agevolt-fe`.
 
 ## Pluginy
 
@@ -14,6 +15,10 @@ Aktualny stav: aktivny pilot s prvym pluginom `myagevolt-db-dev-copilot`.
   triggery, procedury, eventy, OCPP RAW/davkovy tok, jednorazove cistenie dat,
   DB chyby, pomale dotazy a DataGrid DB kontrakty. Plugin vychadza z pilotnej
   migracie ChatGPT projektu `triggers cistenie`.
+- `agevolt-fe` - frontendova praca pre AgeVolt: web-portal pravidla, settings,
+  Dynamic DataGrid V4, lokalizacia, shared komponenty, dashboardy a charging
+  simulator E2E workflow. Plugin cita zive repo KB zdroje a neobsahuje povodny
+  lokalny MCP `agevolt-fe-kb`.
 
 ## Hranica Sukromnej KB
 

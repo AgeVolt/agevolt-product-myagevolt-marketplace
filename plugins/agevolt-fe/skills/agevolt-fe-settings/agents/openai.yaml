@@ -1,0 +1,10 @@
+interface:
+  display_name: "AgeVolt FE Settings"
+  short_description: "Work on static settings pages and shared FE components."
+  icon_small: "./assets/icon.png"
+  icon_large: "./assets/logo.png"
+  brand_color: "#280046"
+  default_prompt: "Use $agevolt-fe-settings to refactor a static settings page against the AgeVolt FE KB."
+
+policy:
+  allow_implicit_invocation: true

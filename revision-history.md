@@ -1,5 +1,18 @@
 # Revision history
 
+## 2026-05-29 - Migracia `agevolt-fe`
+
+- Do marketplace-u `product-myagevolt` bol pridany migrovany plugin
+  `agevolt-fe` zo stareho zdroja `AI/Doplnky/plugins/agevolt-fe`.
+- Prenesene su public-safe skilly, assets, referencie a SmartFox helper bez
+  credentialov.
+- Povodny lokalny MCP `agevolt-fe-kb`, `.mcp.json`, `mcp/` a stare root
+  instalacne/sync skripty neboli prenesene.
+- Plugin bol upraveny na priame citanie autoritativnych lokalnych repo KB
+  zdrojov a na blocker pri chybajucej KB.
+- Verejna Git kopia ma obsahovat rovnaku public-safe projekciu bez private
+  dat, secretov a customer/export podkladov.
+
 ## 2026-05-27 - Pilot `myagevolt-db-dev-copilot`
 
 - Vytvoreny prvy pilotny plugin marketplace-u `product-myagevolt`.

@@ -22,6 +22,9 @@ plugins:
   - id: myagevolt-db-dev-copilot
     status: active-pilot
     path: plugins/myagevolt-db-dev-copilot
+  - id: agevolt-fe
+    status: active-migrated
+    path: plugins/agevolt-fe
 rules:
   create_plugins_only_after_creator_intake: true
   public_git_contains_only_public_safe_bootstrap: true
